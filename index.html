@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Indranil Sinha — Contact</title>
   <style>
-    /* Simple mobile-first card layout inspired by the screenshot */
     :root{
       --bg: #f6f3f1;
       --card: #efe6df;
@@ -21,14 +20,14 @@
       justify-content:center;
       padding:20px 12px;
     }
-    /* make card scale nicely on small phones up to larger mobiles */
     .sidebar-card{
-      width: min(420px, 92vw);
+      width: min(400px, 90vw);
       background: #fff;
-      border-radius:10px;
+      border-radius:16px;
       box-shadow: var(--shadow);
       overflow:hidden;
       transform: translateZ(0);
+      padding-bottom:16px;
     }
     .sidebar-header{
       display:flex;
@@ -45,8 +44,6 @@
       letter-spacing:0.1px;
     }
     .subhead{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-
-    /* menu icon on right */
     .menu{
       margin-left:auto;
       display:flex;flex-direction:column;gap:5px;align-items:flex-end;
@@ -55,15 +52,29 @@
 
     .profile-area{
       background:var(--card);
-      padding:34px 26px 22px 26px;
+      padding:26px 22px 22px 22px;
       text-align:center;
     }
     .avatar{
-      width:128px;height:128px;border-radius:50%;object-fit:cover;border:8px solid #e9e0da;background:#ddd;margin:0 auto;display:block;
+      width:140px;
+      height:140px;
+      border-radius:16px;
+      object-fit:cover;
+      border:4px solid #e9e0da;
+      background:#ddd;
+      margin:0 auto;
+      display:block;
     }
     .profile-name{
-      margin-top:16px;font-weight:800;font-size:20px;color:#111;
-      line-height:1.05;display:flex;align-items:center;justify-content:center;gap:10px;
+      margin-top:16px;
+      font-weight:800;
+      font-size:20px;
+      color:#111;
+      line-height:1.05;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
     }
     .phone-svg{width:20px;height:20px;flex:0 0 20px}
     .underline{
@@ -71,23 +82,23 @@
     }
 
     .actions{
-      padding:14px 22px 26px 22px;
-      background:transparent;display:flex;justify-content:center;align-items:center;
+      padding:14px 22px 22px 22px;
+      display:flex;
+      justify-content:center;
     }
     .btn{
-      display:inline-block;padding:14px 34px;border-radius:30px;font-weight:800;text-decoration:none;
-      box-shadow:0 8px 18px rgba(6,43,104,0.12);border:none;cursor:pointer; font-size:15px;
+      display:inline-block;
+      padding:14px 34px;
+      border-radius:30px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(6,43,104,0.12);
+      border:none;
+      cursor:pointer;
+      font-size:15px;
     }
     .btn-call{background:var(--accent);color:#fff}
-
-    /* small footer spacer to mimic screenshot */
     .card-footer{height:18px;background:#fff;border-top:1px solid rgba(0,0,0,0.04)}
-
-    /* responsive tweaks */
-    @media(min-width:520px){
-      body{padding:36px}
-      .sidebar-card{width:380px}
-    }
   </style>
 </head>
 <body>
@@ -107,7 +118,10 @@
 
     <section class="profile-area">
       <img class="avatar" src="assets/profilepicture.jpeg" alt="Profile picture of Indranil Sinha" />
-      <div class="profile-name"><svg class="phone-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>8274090760</div>
+      <div class="profile-name">
+        <svg class="phone-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
+        8274090760
+      </div>
       <span class="underline" aria-hidden="true"></span>
     </section>
 
