@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Indranil Sinha — Contact</title>
   <style>
-    /* Box sizing */
     *, *::before, *::after { box-sizing: border-box; }
 
     :root{
@@ -15,32 +14,32 @@
       --muted: #6b6b6b;
       --shadow: 0 10px 30px rgba(0,0,0,0.14);
 
-      /* avatar sizing: min, preferred (vw), max */
-      --avatar-min: 120px;
-      --avatar-preferred: 34vw;
-      --avatar-max: 260px;
+      --avatar-min: 100px;
+      --avatar-preferred: 32vw;
+      --avatar-max: 220px;
       --avatar-size: clamp(var(--avatar-min), var(--avatar-preferred), var(--avatar-max));
 
-      /* phone text sizing */
-      --phone-min: 18px;
-      --phone-preferred: 5.6vw;
-      --phone-max: 36px;
+      --phone-min: 17px;
+      --phone-preferred: 5.2vw;
+      --phone-max: 34px;
       --phone-size: clamp(var(--phone-min), var(--phone-preferred), var(--phone-max));
 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
 
-    html,body{height:100%;}
+    /* Respect safe areas (notch / home indicator) */
+    html, body { height: 100%; }
     body{
-      margin:0;
+      margin: 0;
       background: linear-gradient(180deg,#faf9f8 0%, #efe9e1 100%);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:12px;
+      padding: env(safe-area-inset-top,12px) env(safe-area-inset-right,12px) env(safe-area-inset-bottom,12px) env(safe-area-inset-left,12px);
       -webkit-font-smoothing:antialiased;
     }
 
+    /* Card: no forced full-height; limit height so top/bottom remain visible */
     .sidebar-card{
       width:100%;
       max-width:460px;
@@ -51,15 +50,15 @@
       transform: translateZ(0);
       display:flex;
       flex-direction:column;
-      min-height: calc(100vh - 24px);
-      max-height: calc(100vh - 24px);
+      /* leave some breathing room above/below even on tall phones */
+      max-height: calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
 
     .sidebar-header{
       display:flex;
       align-items:center;
       gap:12px;
-      padding:16px 18px;
+      padding:14px 16px;
       border-bottom:1px solid rgba(0,0,0,0.06);
       flex:0 0 auto;
     }
@@ -70,31 +69,33 @@
     .menu{ margin-left:auto; display:flex;flex-direction:column;gap:5px;align-items:flex-end; }
     .menu span{ display:block;width:18px;height:3px;background:#0b79ff;border-radius:3px; }
 
+    /* Middle area becomes scrollable if content is taller than available space */
     .profile-area{
       background:var(--card);
-      padding:22px;
+      padding:18px 16px;
       text-align:center;
       flex:1 1 auto;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap:14px;
+      gap:12px;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Responsive avatar: square, soft corners */
     .avatar{
       width: var(--avatar-size);
       height: var(--avatar-size);
-      border-radius:14px;
+      border-radius:12px;
       object-fit:cover;
       border:4px solid #e9e0da;
       background:#ddd;
       display:block;
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      flex: 0 0 auto;
     }
 
-    /* phone block: icon scales with text via em units */
     .profile-name{
       margin-top:0;
       font-weight:800;
@@ -103,7 +104,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
+      gap:10px;
       font-size: var(--phone-size);
     }
     .phone-svg{
@@ -112,17 +113,12 @@
       flex:0 0 1.05em;
       display:block;
     }
-    .tel{
-      display:inline-block;
-      font-variant-numeric:tabular-nums;
-      letter-spacing:0.6px;
-      font-size: inherit; /* matches parent (var(--phone-size)) */
-    }
+    .tel{ display:inline-block; font-variant-numeric:tabular-nums; letter-spacing:0.6px; font-size:inherit; }
 
     .underline{ width:56px;height:4px;background:var(--accent);display:block;margin-top:6px;border-radius:4px; }
 
     .actions{
-      padding:14px 22px 22px 22px;
+      padding:12px 16px 16px;
       display:flex;
       justify-content:center;
       flex:0 0 auto;
@@ -130,8 +126,8 @@
     }
     .btn{
       display:inline-block;
-      padding:14px 34px;
-      border-radius:30px;
+      padding:12px 26px;
+      border-radius:26px;
       font-weight:800;
       text-decoration:none;
       box-shadow:0 8px 18px rgba(6,43,104,0.12);
@@ -141,25 +137,23 @@
     }
     .btn-call{ background:var(--accent); color:#fff; }
 
-    .card-footer{ height:12px; background:#fff; border-top:1px solid rgba(0,0,0,0.04); flex:0 0 auto; }
+    .card-footer{ height:10px; background:#fff; border-top:1px solid rgba(0,0,0,0.04); flex:0 0 auto; }
 
-    /* Mobile narrow: button full width, slightly reduce padding */
+    /* Narrow phones: reduce spacing so entire card comfortably fits */
     @media (max-width:420px){
-      body{ padding:8px; }
-      .sidebar-card{ border-radius:12px; min-height: calc(100vh - 16px); max-height: calc(100vh - 16px); }
-      .profile-area{ padding:18px 14px; gap:12px; }
-
-      /* ensure avatar doesn't exceed viewport; clamp already handles it */
+      body{ padding: env(safe-area-inset-top,8px) env(safe-area-inset-right,8px) env(safe-area-inset-bottom,8px) env(safe-area-inset-left,8px); }
+      .sidebar-card{ border-radius:12px; max-height: calc(100vh - 34px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+      .profile-area{ padding:14px 12px; gap:10px; }
       .avatar{ border-radius:12px; }
-
-      .actions{ padding:12px 14px 18px; }
-      .btn{ display:block; width:100%; padding:14px 16px; border-radius:12px; font-size:18px; }
+      .actions{ padding:10px 12px 14px; }
+      .btn{ display:block; width:100%; padding:12px 14px; border-radius:12px; font-size:17px; }
     }
 
     /* Desktop polish */
     @media (min-width:900px){
-      .avatar{ width:200px; height:200px; border-radius:16px; }
-      .profile-name{ font-size:22px; }
+      .sidebar-card { max-width:560px; }
+      .avatar { width:220px; height:220px; border-radius:16px; }
+      .profile-name{ font-size:20px; }
     }
   </style>
 </head>
